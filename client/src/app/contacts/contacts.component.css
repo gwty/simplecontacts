@@ -1,0 +1,93 @@
+/* ContactsComponent's private CSS styles */
+.contacts {
+    margin: 0 0 2em 0;
+}
+
+.contacts tr {
+    position: relative;
+    cursor: pointer;
+    background-color: #eee;
+    color:black;
+    margin: .5em;
+    padding: .3em 0;
+    height: 1.6em;
+    border-radius: 4px;
+}
+
+.contacts tr:hover {
+    color: #60ff66;
+    background-color: #60ff66;
+    left: .1em;
+}
+
+.contacts a {
+    color: #333;
+    text-decoration: none;
+    position: relative;
+    display: block;
+}
+
+.contacts tr:hover {
+    color:black;
+}
+
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    
+}
+
+td, th {
+    border: 1px solid #ffffff;
+    padding: 8px;
+}
+
+td{
+    text-align: center;
+}
+
+table tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.contacts .details {
+  font-size: 1em;
+  color:#222;
+  padding: 1em 0.7em 0.7em 0.7em;
+  line-height: 1.3em;
+  position: relative;
+  text-align: center;
+  margin-right: .8em;
+  border-radius: 4px 4px 4px 4px;    
+}
+
+button {
+    background-color: #eee;
+    border: none;
+    width:100%;
+    padding: 1em 0.7em 0.7em 0.7em;
+    line-height: 1.3em;
+    border-radius: 4px;
+    cursor: pointer;
+    cursor: hand;
+    font-family: Arial;
+}
+
+button:hover {
+    background-color: #cfd8dc;
+}
+
+button.delete {
+    background-color: gray !important;
+    color: white;
+}
+
+input {
+    border-radius: 4px 4px 4px 4px;   
+}
+
+button.add {
+    border-radius: 4px 4px 4px 4px;
+    font-size:1.2em;
+}

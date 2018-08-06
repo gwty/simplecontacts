@@ -1,0 +1,34 @@
+<table class="contacts">
+<app-contacts-search></app-contacts-search><br>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone Number</th>
+    <th>Archive</th>    
+    <th>Delete</th>
+  </tr>
+  <tr *ngFor="let contact of contacts" >
+    <td routerLink="/detail/{{contact.id}}" class="name details">{{contact.first_name}} {{contact.last_name}}</td>
+    <td routerLink="/detail/{{contact.id}}" class="attr details">{{contact.email}}</td>
+    <td routerLink="/detail/{{contact.id}}" class="attr details">{{contact.phone_number}}</td>
+    <td><button class="delete" title="archive contact" (click)="archive(contact)">[]</button></td>     
+    <td><button class="delete" title="delete contact" (click)="delete(contact)">x</button></td>
+  </tr>
+  <div>
+  <h2>Add Contact</h2>
+  <table>
+  <tr><th>Name</th><th>Email</th><th>Phone Number</th></tr>
+  <tr>
+  <td><input #contactName required/></td>
+  <td><input type="email" #email ngModel email /></td>
+  <td><input #phone /></td>
+  </tr>
+    
+  </table>
+  <button class="add" (click)="add(contactName.value,phone.value,email.value); contactName.value='';phone.value='';email.value='';">
+    Add Contact
+  </button>
+</div>
+
+
+</table>

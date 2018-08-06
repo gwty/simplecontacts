@@ -1,0 +1,21 @@
+version: '2' # specify docker-compose version
+
+# Define the services/containers to be run
+services:
+  angular: # name of the first service
+    build: client # specify the directory of the Dockerfile
+    ports:
+      - "4200:4200" # specify port forwarding
+      
+  database: # name of the third service
+    build: database # specify image to build container from
+    ports:
+      - "7512:5432" # specify port forwarding
+      
+  express: #name of the second service
+    build: server # specify the directory of the Dockerfile
+    ports:
+      - "4000:4000" #specify ports forwarding
+    environment:
+        DATABASE_URL: postgres://postgres:sql@database:5432/contacts
+        CLIENT_URL: http://localhost:4200

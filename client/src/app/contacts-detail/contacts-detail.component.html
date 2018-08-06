@@ -1,0 +1,26 @@
+<div *ngIf="contacts">
+  <h2>{{contacts[0].first_name}} {{contacts[0].last_name}} Details</h2>
+  <div><span>id: </span>{{contacts[0].id}}</div>
+  <div>
+    <label>First name:
+      <input [(ngModel)]="contacts[0].first_name" placeholder="First name"/>
+    </label><br>
+    <label>Last name:
+      <input [(ngModel)]="contacts[0].last_name" placeholder="Last name"/>
+    </label><br>
+    <label>E-mail:
+      <input [(ngModel)]="contacts[0].email" placeholder="E-mail"/>
+    </label><br>   
+    <label>Phone number:
+      <input [(ngModel)]="contacts[0].phone_number" placeholder="Phone Number"/>
+    </label><br>    
+    <label>Country:
+      <input [(ngModel)]="contacts[0].country" placeholder="Country"/>
+    </label><br>    
+    <label>Type:
+      <input [(ngModel)]="contacts[0].type" placeholder="Type"/>
+    </label>        
+  </div>
+  <button (click)="goBack()">go back</button>
+  <button (click)="save()">save</button>
+</div>

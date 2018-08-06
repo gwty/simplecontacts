@@ -1,0 +1,48 @@
+This is a simple Contacts application. By Gowtham Ashok
+
+It consists of 
+- Server (express.js)
+- Client (Angular 6)
+- Database (Postgres)
+
+It is held together by docker-compose.
+___________________________________________________________
+
+Install docker and docker-compose on your machine. (on a linux system preferably)
+To run, use the command "docker-compose build", and then "docker-compose up"
+Open the browser at localhost:4200 to access the app
+___________________________________________________________
+
+The server is a simple REST server, with the REST API located at server/routes/index.js. It has a DockerFile and and app.js file that routes the requests. A CORS variable is present in app.js that allows the REST API to be used from only known sources
+
+The client is an Angular 6 application
+Use "docker exec -it crudapp_angular_1 /bin/bash" to access this machine after using docker-compose up
+To run it, you can use "ng serve", and to test it, you can use "ng test"
+
+The database is a simple Postgres database, which is initialized by docker. It has some data in it, which is present in the contacts.sql file. It was created by using the "backup" option in pgadmin 4
+___________________________________________________________
+
+Implemented:
+
+Create, Update, Delete, Archive and Search contacts. 
+Unit testing is also implemented
+___________________________________________________________
+
+TODO:
+
+Error checking on contact fields
+Proper E2E testing using protractor
+Load testing using Jmeter
+Create a table to list archived contacts (currently they're just inactive in the database)
+___________________________________________________________
+
+Future Improvements:
+
+Implement better coding standards
+HTTPS/SSL support
+More optimizations
+Scaling to multiple machines to handle higher loads
+Using Redis/Varnish to support caching
+Using RabbitMQ messaging queues to queue tasks
+Creating a JIRA/Confluence Dashboard to organize development and track bugs
+Using kubernetes in conjunction with docker
