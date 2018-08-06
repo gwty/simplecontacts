@@ -9,7 +9,6 @@ var db = pgp(process.env['DATABASE_URL'])
 router.get('/api/all', function(req, res, next) {
     db.query('SELECT * FROM contacts.contacts where status=true')
   .then(function (data) {
-    console.log(data);
     res.jsonp(data);
   })
   .catch(function (error) {
@@ -52,8 +51,9 @@ router.post('/api/', function(req, res, next) {
  var phone_number = req.body.phone_number;
  var country = req.body.country;
  var type = req.body.type;
+ var id = null;
  
- db.one("INSERT INTO contacts.contacts (first_name, last_name, email, phone_number, country, type,status) VALUES (${first_name},${last_name},${email},${phone_number},${country},${type},True)", {
+ db.one("INSERT INTO contacts.contacts (first_name, last_name, email, phone_number, country, type,status) VALUES (${first_name},${last_name},${email},${phone_number},${country},${type},True) RETURNING id", {
      first_name:first_name,
      last_name:last_name,
      email:email,
@@ -62,11 +62,12 @@ router.post('/api/', function(req, res, next) {
      type:type
  })
   .then(function (data) {
-      console.log(data);
+      res.send(data);
   })
     .catch(function (error) {
     console.log('ERROR:', error)
   });
+    
 });
 
 
@@ -74,7 +75,6 @@ router.delete('/api/delete/:id', function(req, res, next) {
  var id = req.params.id;
  db.one("delete from contacts.contacts where id = "+id)
   .then(function (data) {
-      console.log(data);
   })
     .catch(function (error) {
     console.log('ERROR:', error)
@@ -85,7 +85,6 @@ router.delete('/api/archive/:id', function(req, res, next) {
  var id = req.params.id;
  db.one("UPDATE contacts.contacts set status=false where id = "+id)
   .then(function (data) {
-      console.log(data);
   })
     .catch(function (error) {
     console.log('ERROR:', error)
@@ -111,13 +110,10 @@ router.put('/api/update/:id', function(req, res, next) {
  }  
 )
   .then(function (data) {
-      console.log(data);
   })
     .catch(function (error) {
     console.log('ERROR:', error)
   });
 });
-
-
 
 module.exports = router;
