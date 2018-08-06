@@ -6,6 +6,10 @@ services:
     build: client # specify the directory of the Dockerfile
     ports:
       - "4200:4200" # specify port forwarding
+    volumes:
+     - ./client/:/usr/src/app/  
+     - /usr/src/app/node_modules
+     
       
   database: # name of the third service
     build: database # specify image to build container from
@@ -19,3 +23,6 @@ services:
     environment:
         DATABASE_URL: postgres://postgres:sql@database:5432/contacts
         CLIENT_URL: http://localhost:4200
+    volumes:
+     - ./server/:/usr/src/app/
+     - /usr/src/app/node_modules

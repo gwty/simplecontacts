@@ -17,8 +17,8 @@ ENV NAME World
 
 # set working directory
 RUN mkdir /usr/src/app
-# add app
-COPY . /usr/src/app
+# # add app
+# COPY . /usr/src/app
 WORKDIR /usr/src/app/
 
 # add `/usr/src/app/node_modules/.bin` to $PATH

@@ -6,7 +6,7 @@ FROM node:8
 RUN mkdir -p /usr/src/app
 
 # Get all the code needed to run the app
-COPY . /usr/src/app
+# COPY . /usr/src/app
 
 # Change directory so that our commands run inside this new directory
 WORKDIR /usr/src/app
