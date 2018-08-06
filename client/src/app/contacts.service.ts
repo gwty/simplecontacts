@@ -67,10 +67,10 @@ export class ContactsService {
   //////// Save methods //////////
 
   /** POST: add a new contact to the server */
-  addContacts (contacts: Contacts): Observable<Contacts> {
-    return this.http.post<Contacts>(this.contactsUrl, contacts, httpOptions).pipe(
-      tap((contacts: Contacts) => this.log(`added contacts w/ id=${contacts.id}`)),
-      catchError(this.handleError<Contacts>('addContacts'))
+  addContacts (contacts: Contacts): Observable<number> {
+    return this.http.post<number>(this.contactsUrl, contacts, httpOptions).pipe(
+      tap((data) => this.log(`added contacts w/ id=${data.id}`)),
+      catchError(this.handleError<number>('addContacts'))
     );
   }
 

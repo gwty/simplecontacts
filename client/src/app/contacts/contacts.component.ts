@@ -46,13 +46,19 @@ export class ContactsComponent implements OnInit {
     if (!name) { return; }
     
     var newContact = new Contacts;
-    var newContactfromServer;
     newContact.first_name = names[0];
     newContact.last_name = names[1];
     newContact.phone_number = phone_number;
     newContact.email = email;
     newContact.status = true;
-    this.contactsService.addContacts(newContact).subscribe(contacts => newContact = contacts);
-    this.contacts.push(newContact);
+    newContact.id = null;
+    this.contactsService.addContacts(newContact).subscribe((data) => {
+            newContact.id = data.id;
+            this.contacts.push(newContact);
+    },
+    () => console.log("adding contacts complete")
+    );
+    
+    
     }
 }
